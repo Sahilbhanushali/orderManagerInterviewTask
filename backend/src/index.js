@@ -20,6 +20,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:5173",
+            "https://order-manager-interview-task-8pntsv9bg.vercel.app/"
         ],
         credentials: true,
     })
