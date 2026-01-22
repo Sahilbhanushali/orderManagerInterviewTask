@@ -6,12 +6,11 @@ import orderRoutes from './routes/order.routes.js';
 import cors from "cors";
 import { errorHandler } from './middleware/error.middleware.js';
 
-import path from "path";
+
 import { connectDB } from "./lib/db.js"
 dotenv.config();
 
 const PORT = process.env.PORT;
-const __dirname = path.resolve();
 
 const app = express();
 app.use(express.json());
@@ -22,11 +21,13 @@ app.use(
             "http://localhost:5173",
             "https://order-manager-interview-task-bxiivnxjb.vercel.app",
             "https://order-manager-interview-task-2ni6y5cp4.vercel.app",
-            "https://order-manager-interview-task.vercel.app"
+            "https://order-manager-interview-task.vercel.app",
         ],
         credentials: true,
     })
 );
+
+app.get("/ping", (req, res) => res.send("pong"));
 app.use('/api/customers', customerRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
